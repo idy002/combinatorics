@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{eg}{Example}
+\newtheorem{ex}{Exercise}
+\newtheorem{defi}{Definition}
+\theoremstyle{definition}
+\newtheorem{hw}{Problem}
+\newenvironment{sol}
+  {\par\vspace{3mm}\noindent{\it Solution}.}
+  {\qed}
+
+\newcommand{\ov}{\overline}
+\newcommand{\cb}{{\cal B}}
+\newcommand{\cc}{{\cal C}}
+\newcommand{\cd}{{\cal D}}
+\newcommand{\ce}{{\cal E}}
+\newcommand{\cf}{{\cal F}}
+\newcommand{\ch}{{\cal H}}
+\newcommand{\cl}{{\cal L}}
+\newcommand{\cm}{{\cal M}}
+\newcommand{\cp}{{\cal P}}
+\newcommand{\cs}{{\cal S}}
+\newcommand{\cz}{{\cal Z}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\dist}{\mbox{\rm dist}}
+\newcommand{\bn}{{\mathbf N}}
+\newcommand{\bz}{{\mathbf Z}}
+
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{2ex}
+\newenvironment{proofof}[1]{\bigskip\noindent{\itshape #1. }}{\hfill$\Box$\medskip}
+
+\renewcommand{\familydefault}{pnc}
+
+\begin{document}
+
+$\;$\hfill Suggested due date: 2018/03/21
+
+\bigskip
+
+\begin{center}
+{\LARGE\bf Combinatorics: Homework 3}
+\end{center}
+
+\bigskip
+
+\section{Combinatorial identities}
+
+\begin{hw}
+Prove that for any $n \in \bn$,
+\[\sum_{k \geq 0} \binom{n}{2k} \binom{2k}{k} 2^{n-2k} =
+  \binom{2n}{n}.\]
+There exists a combinatorial proof for this, but I don't suggest you try to find it.
+\end{hw}
+
+\begin{sol}
+	Firstly, we can observe the left to get that:
+	$$
+		\binom{n}{2k}\binom{2k}{k} = \frac{n!}{(n-2k)!(2k)!}\frac{(2k)!}{k!k!} = \frac{n!}{k!(n-k)!}\frac{(n-k)!}{k!(n-2k)!} = \binom{n}{k}\binom{n-k}{n-2k}
+	$$
+	Then we only need to prove the following formula:
+	$$
+	\sum_{k \geq 0} \binom{n}{k}\binom{n-k}{n-2k} 2^{n-2k} = \binom{2n}{n}
+	$$
+	There exists a set $A = [2n]$ and we want to count the number of subset $S$ of $A$, whose size is $n$. It's obvious that the number is $\binom{2n}{n}$.
+	
+	Let's consider the left side. Firstly, it enumerate the set $P =  S\cap (S + {-n})$. Then we have determined $2 \mind 
+\end{sol}
+
+\begin{hw}
+Prove that for any $m, n \in \bn$,
+\[
+\sum_{r \geq 0} \binom{2n}{2r-1} \binom{r-1}{m-1} = \binom{2n-m}{m-1} 2^{2n-2m+1}.
+\]
+Try to find a combinatorial proof for this one.
+\end{hw}
+
+\section{Practice on PIE}
+
+In each problem, clearly specify what is the universe, what are the bad sets,
+how to calculate the size of the bad sets, etc.
+
+\begin{hw}
+Complete the combinatorial proof of the following: For any positive integer
+$n$,
+\[
+\sum_{k=0}^n(-1)^k \binom{2n-k}{k} 2^{2n-2k} = 2n+1.
+\]
+\end{hw}
+
+\begin{hw}
+Count the number of permutations $\pi$ of $[2n]$ such that $\pi(i)+ \pi(i+1) \neq 2n+1$ for all $1 \leq i \leq 2n-1$.
+\end{hw}
+
+\section{More for the pie day}
+
+\begin{hw}
+The Euler function $\phi(n)$ is defined to be the number of elements
+in $[n]$ that are relatively prime to $n$. Define $f(n)= \sum_{i=1}^n
+\phi(i)$.
+
+Approximately how big is $f(n)$?
+\end{hw}
+
+\section{Some optional hard problems}
+
+\begin{hw}
+A {\em tournament} is a complete graph with exactly one direction on
+each edge.
+A {\em Hamilton path} in a graph is a path in the graph that visits
+every vertex exactly once.
+
+Prove that, in any tournament,
+
+(a) there exists at least one Hamilton path;
+
+(b) the number of Hamilton paths is odd.
+
+\end{hw}
+
+\begin{hw}
+Suppose $G$ is a connected graph. A {\em spanning subgraph} of $G$ is
+a subgraph that connects all the vertices of $G$. Prove that,
+$G$ has an odd number of spanning subgraphs if and only if
+$G$ is bipartite.
+\end{hw}
+
+\end{document}
