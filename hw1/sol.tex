@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+%\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{eg}{Example}
+\newtheorem{ex}{Exercise}
+\newtheorem{defi}{Definition}
+\theoremstyle{definition}
+\newtheorem{hw}{Problem}
+\newenvironment{sol}
+{\par\vspace{3mm}\noindent{\it Solution}.}
+{\qed}
+
+\newcommand{\ov}{\overline}
+\newcommand{\cb}{{\cal B}}
+\newcommand{\cc}{{\cal C}}
+\newcommand{\cd}{{\cal D}}
+\newcommand{\ce}{{\cal E}}
+\newcommand{\cf}{{\cal F}}
+\newcommand{\ch}{{\cal H}}
+\newcommand{\cl}{{\cal L}}
+\newcommand{\cm}{{\cal M}}
+\newcommand{\cp}{{\cal P}}
+\newcommand{\cs}{{\cal S}}
+\newcommand{\cz}{{\cal Z}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\dist}{\mbox{\rm dist}}
+\newcommand{\bn}{{\mathbf N}}
+\newcommand{\bz}{{\mathbf Z}}
+
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{2ex}
+\newenvironment{proofof}[1]{\bigskip\noindent{\itshape #1. }}{\hfill$\Box$\medskip}
+
+\renewcommand{\familydefault}{pnc}
+
+\begin{document}
+	
+	$\;$\hfill Suggested due date: 2018/03/07
+	
+	\bigskip
+	
+	\begin{center}
+		{\LARGE\bf Combinatorics: Homework 1}
+	\end{center}
+	
+	\bigskip
+	
+	\begin{hw}
+		According to Lucas's theorem, we have
+		$$
+		\binom{n}{i} 
+		\equiv \binom{(n_1n_2\dots n_k)_2}{(i_1i_2\dots i_k)_2}
+		\equiv \binom{n_1}{i_1}\binom{n_2}{i_2}\cdots\binom{n_k}{i_k} \pmod 2
+		$$
+		where $(n_1n_2\dots n_k)_2$ and $(i_1i_2\dots i_k)_2$ are the binary expressions of $n$ and $i$.
+		
+		$\binom{n}{i}$ is odd if and only if $i_k \leq n_k$ for all $k$, so the number of such $i$ is $2^{cnt}$ where $cnt$ is the number of $1$ in the binary expression of $n$.
+		$2018 = (0111 \; 1110 \; 0010)_2$ so the answer is $2^7 = 128$.
+	\end{hw}
+	
+	\begin{hw}
+		\textbf{(a)} If we use a bit string to express a set, we have: \\
+			$A_{0} = 0000000000000001$ \\
+			$A_{1} = 0000000000000010$ \\
+			$A_{2} = 0000000000000101$ \\
+			$A_{3} = 0000000000001000$ \\
+			$A_{4} = 0000000000010101$ \\
+			$A_{5} = 0000000000100010$ \\
+			$A_{6} = 0000000001010001$ \\
+			$A_{7} = 0000000010000000$ \\
+			$A_{8} = 0000000101010001$ \\
+			$A_{9} = 0000001000100010$ \\
+			$A_{10} = 0000010100010101$ \\
+			$A_{11} = 0000100000001000$ \\
+			$A_{12} = 0001010100000101$ \\
+			$A_{13} = 0010001000000010$ \\
+			$A_{14} = 0101000100000001$ \\
+			$A_{15} = 1000000000000000$ \\
+
+		\textbf{(b)}
+		For simplification, let's define $B_0 = \emptyset$ and $B_{i+1} = \{a + 1 \vert a \in A_i\}$ for all $i \geq 0$, $S^{(n)} = S + \{1\} + \{1\} + \cdots + \{1\}$ (add $n$ times) and $AB = A\Delta B$ . So $B_1 = \{1\}$, $B_2 = \{2\}$, $B_3 = \{ 1, 3\}$ and so on. 
+		
+		Let's define the proposition $P(N)$ be :
+		$$
+			B_{2^N+i} = B_{2^N-i}B_i^{(2^N)} \text{ for all } 1 \leq i \leq 2^N - 1
+		$$ and $$
+			B_{2^N} = \{2^N\}
+		$$
+		We can check and get that $P(N)$ holds for $N = 0, 1$.
+		
+		Assuming $P(N)$ is true, let's prove $P(N+1)$ is also true:
+		\begin{itemize}
+			\item $B_{2^{N+1}} = \{2^{N+1}\}$: 
+				\[ \begin{split}
+				B_{2^{N+1}} & = B_{2^{N+1}-1}^{(1)}B_{2^{N+1}-2} \\
+							& = (B_1B_{2^N-1}^{(2^N)})^{(1)}B_2B_{2^N-2}^{(2^N)} \\
+							& = B_1^{(1)}B_2B_{2^N-1}^{(2^N+1)}B_{2^N-2}^{2^N} \\
+							& = B_{2^N-1}^{(2^N+1)}B_{2^N-2}^{2^N} \\
+							& = (B_{2^N})^{(2^N)} \\
+							& = (\{2^N\})^{(2^N)} \\
+							& = \{2^{N+1}\}
+				\end{split} \]
+			\item $i = 1$:
+				\[ \begin{split}
+				B_{2^{N+1}+1} & = B_{2^{N+1}}^{(1)}B_{2^{N+1}-1} \\
+							  & = \{2^{N+1} + 1\}B_{2^{N+1}-1} \\
+							  & = B_{1}^{(2^{N+1})}B_{2^{N+1}-1}
+				\end{split} \]
+			\item $2 \leq i \leq 2^N - 1$:(This part itself is also an induction proof)
+				 \[ \begin{split}
+					 B_{2^{N+1}+i} 
+					 & = (B_{2^{N+1}-i+1}B_{i-1}^{(2^{N+1})})^{(1)}B_{2^{N+1}-i+2}B_{i-2}^{2^{N+1}}  \\
+					 & = (B_{2^{N+1}-i+1})^{(1)}B_{2^{N+1}-i+2}(B_{i-1}B_{i-2})^{(2^{N+1})} \\
+					 & = B_{2^{N+1}-i}B_{i}^{2^{N+1}}
+				 \end{split} \]
+		\end{itemize}
+		So $\abs{A_{2^n-1}} = \abs{B_{2^n}} = 1$ for all $n >= 1$.
+	\end{hw}
+	
+	\begin{hw}
+		\textbf{(b)}
+			Let's define a state function $g(s)$ equal to the sum of the distances between all the $n$ points for the state $s$. Explicitly, 
+			$$
+				g(s) = \sum_{i = 0}^{n}\sum_{j = i + 1}^{n}s[i]s[j]min(j - i, n - j + i)
+			$$ 
+			where $s[0], s[1], \dots, s[n-1]$ are the number of points at the places $0, 1, \cdots, n - 1$.
+			
+			It's easy to observe the fact that any movement will cause $g(s)$ increasing and $g$ will stop increasing when no movement can be done.(Only when $n$ is odd, $g$ has this property)
+	\end{hw}
+	
+	\bigskip
+	
+	\bigskip
+	
+	\bigskip 
+	
+	I've known the answers of the rest problems from Wang Tianzhe. 
+	
+\end{document}

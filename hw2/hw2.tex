@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{eg}{Example}
+\newtheorem{ex}{Exercise}
+\newtheorem{defi}{Definition}
+\theoremstyle{definition}
+\newtheorem{hw}{Problem}
+\newenvironment{sol}
+  {\par\vspace{3mm}\noindent{\it Solution}.}
+  {\qed}
+
+\newcommand{\ov}{\overline}
+\newcommand{\cb}{{\cal B}}
+\newcommand{\cc}{{\cal C}}
+\newcommand{\cd}{{\cal D}}
+\newcommand{\ce}{{\cal E}}
+\newcommand{\cf}{{\cal F}}
+\newcommand{\ch}{{\cal H}}
+\newcommand{\cl}{{\cal L}}
+\newcommand{\cm}{{\cal M}}
+\newcommand{\cp}{{\cal P}}
+\newcommand{\cs}{{\cal S}}
+\newcommand{\cz}{{\cal Z}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\dist}{\mbox{\rm dist}}
+\newcommand{\bn}{{\mathbf N}}
+\newcommand{\bz}{{\mathbf Z}}
+
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{2ex}
+\newenvironment{proofof}[1]{\bigskip\noindent{\itshape #1. }}{\hfill$\Box$\medskip}
+
+\renewcommand{\familydefault}{pnc}
+
+\begin{document}
+
+$\;$\hfill Suggested due date: 2018/03/15
+
+\bigskip
+
+\begin{center}
+{\LARGE\bf Combinatorics: Homework 2}
+\end{center}
+
+\bigskip
+
+\begin{hw}
+Determine the size of the following set:
+\[ \left\{m \in [2017] : \binom{2017}{m} \not\equiv 0 \pmod 3 \right\} \]
+\end{hw}
+
+\begin{sol}
+	Let $n = (n_1n_2\dots n_k)_3$, $m = (m_1m_2\dots m_k)_3$.
+	Then 
+	$$
+		\binom{n}{m} \equiv \binom{n_1}{m_1}\binom{n_2}{m_2}\cdots\binom{n_k}{m_k} \pmod{3}
+	$$
+	and $\binom{n}{m} \equiv 0 \pmod{3}$ if and only if exist $i$ such that $m_i > n_i$. So there are $(1+n_1)(1+n_2)\cdots(1+n_k)$ $m$ such that $\binom{n}{m} \not \equiv 0 \pmod{3} \quad (0 \leq m \leq n)$. So there are $(1+n_1)(1+n_2)\cdots(1+n_k)-1$ such $m$.
+	
+	$2017 = (2202201)_3$ and then there are $3^4 \times 2 -1= 161$ such $m$.
+\end{sol}
+
+\begin{hw}
+Find the number of ordered pairs $(A, B, C)$ such that $A, B, C
+\subseteq [n]$ and $A \cup B \cup C = [n]$. Justify your answer.
+\end{hw}
+
+\begin{sol}
+	My answer is $7^n$.
+	
+	Let's consider every element $a$ that belongs to $[n]$. Because $A\cup B\cup C = [n]$, there are $7$ situations about whether $a \in A$, $a \in B$ and $a \in C$. So there are $7^n$ such $(A,B,C)$.
+\end{sol}
+
+\begin{hw}
+Let $\mathcal{S}$ be the set of all the $k$-tuples of subsets of
+$[n]$, i.e.
+\[  \mathcal{S} = \{(A_1, A_2, ..., A_k): A_i \subseteq [n] \}.\]
+Find a closed formula for
+\[ \sum_{(A_1, A_2, ..., A_k) \in \mathcal{S}} |A_1 \cup A_2 \cup
+  \dots \cup A_k|.\]
+Justify your answer.
+\end{hw}
+
+\begin{sol}
+	My answer is 
+	$$
+		\sum_{i = 0}^{n}i\binom{n}{i}(2^k-1)^i
+	$$
+	Let's first enumerate the size of set $A_1\cup A_2 \cup \cdots \cup A_k$, which is $i$ from $0$ to $n$. For the size $i$, there are $\binom{n}{i}$ sets. For each set, we can know that there are $(2^k-1)^i$ $k$-tuples to obtain such set(for similar reason of Problem 2). Finally, for each $A_1,A_2,\dots,A_k$, the size of their union is $i$. Sum them up, we can get the result.
+\end{sol}
+
+\begin{hw}
+Give a combinatorial proof for the following identity
+\[ \sum_{k=0}^{n} \binom{n}{k} \binom{n-k}{m-k} = 2^m \binom{n}{m} \]
+\end{hw}
+
+\begin{sol}
+	Let's think about what the right side counts. It firstly choose a subset $A$ of $[n]$, and then choose a subset $B$ of $A$. And the number of $(A,B)$ is $2^m\binom{n}{m}$. 
+	
+	The left side counts such a number in a different way. Firstly, it enumerate the size of set $B$, named $k$ ($0 \leq k \leq n$). For each size $k$, there are $\binom{n}{k}$ such $B$. Then we need to know how many set $A$ that has the size $m$ and contains $B$. We can choose $m - k$ elements from the set $[n] \ B$ to get the rest elements of $A$. And the number if $\binom{n-k}{m-k}$. Finally, sum them up and we can get the number of all pairs $(A,B)$. 
+\end{sol}
+
+\begin{hw}
+Give a combinatorial proof for the following equation. For any positive integers
+$a$ and $b$,
+\[ \sum_{i=0}^a \binom{a}{i} \binom{b+i}{a} = \sum_{i=0}^a \binom{a}{i}\binom{b}{i} 2^i .\]
+\end{hw}
+
+\begin{sol}
+	Assume there exists two sets, called $A$ and $B$, and the size of $A$ is $a$ as well as the size of $B$ is $b$. 
+	
+	Let's see what the left side computes. Firstly, it chooses a subset of $A$ requiring its size is $i$ and we calls it $P$. Secondly, it chooses a subset of $P\cup B$ requiring its size is $a$ and we calls it $Q$. And the result of left side is the number of pairs $(P,Q)$.
+	
+	Let's see what the right side computes. Firstly, it enumerates $i$ as the size of $B\cap Q$ and chooses all the qualified $B-Q$, using $\binom{b}{i}$. Secondly, it chooses the elements that do not belong to $Q$ in $A$, using $\binom{a}{i}$ and the union of the rest part of $A$ and $B - Q$ is $Q$. So far, it has finished the enumerating of $Q$. We need to enumerate the number of $P$ when the $Q$ has determined. There are two requirement:
+	\begin{itemize}
+		\item $A \cap Q \subset P$.
+		\item $P \subset A$.
+	\end{itemize}
+	We can enumerate every element of $A-(A\cap Q)$ to choose whether we put the element to $P$. The size of $A-(A\cap Q)$ is $i$ and there are $2^i$ such $P$. Then we have finished the enumeration of $(P,Q)$.
+\end{sol}
+
+\begin{hw} Can you colour all the non-negative integers into two
+  colours, red and blue, such that each positive integer can be
+  expressed as the sum of two different red
+numbers in the same number of ways as the sum of two different blue numbers.
+\end{hw}
+
+\begin{sol}
+	I have not solved this problem. But we find that if there exists such a color scheme, then it exists only one such scheme. We can construct such a scheme by considering whether $n$ has the same color with $0$. If $n$ can be expressed in the same number of two colors, we put $n$ apart from $0$. Otherwise, we put $n$ together with $0$. But I do not know if this process can last forever. If the difference of the two numbers greater than one, we will fail. I have write a program to have a try and this process can at least last to $10000$. So I think we "may" have such a coloring scheme.
+\end{sol}
+
+\begin{hw}
+Can you colour the positive integers into some $k>1$ colours, such
+that the numbers with any particular colour form an arithmetic
+progression,
+and the common difference of each colour is distinct?
+\end{hw}
+
+\begin{sol}
+	It's not possible! Proof by contradiction:
+	
+	Assume that there exists a color scheme with $k$ colors. Define $C_i$ as the set of numbers whose color is $i$. We can find the color $p$ that has the minimum common difference and we call the set corresponds to the color is $C_p$ and call the common difference is $d_p$. Let $a$ be the minimum number in $C_p$. Let's consider the numbers $D = \{ a+1 + kd_p \mid k \in Z^+ \} $.  For all $i \in {1, 2, \dots, k}$, one of following two situations occurs:
+	\begin{itemize}
+		\item $D \cap C_i = \emptyset$.
+		\item $D \cap C_i$ is a proper subset of $D$. And the elements in $D \cap C_i$ also form an arithmetic progression(The common difference is $lcm(d_p,d_i)$ and $lcm(d_p,d_i) > d_p$. 
+	\end{itemize}
+	We construct a mapping $f$ and let $f(a+1+kd_p) = k$. Then we can color all the positive numbers using at most $k-1$ colors(if $f(a+1+kd_p)$ has color $c$, then we give $k$ the color $c$). Because $C_p \cap D = \emptyset$, we have no number with color $p$. Therefore, the number of color decreases.
+	
+	Because $k$ is finite, we can repeat such a process and finally get that we can color all the positive numbers with only one color while the common difference is greater that one. But it's obvious not possible. 
+	
+	So there is not such a color scheme.
+\end{sol}
+
+\begin{hw} Does there exist a set of positive integers A, and two
+  positive integers $N$ and $r$, such that for all integers $n>N$,
+$n$ can be expressed in the same number of ways as the sum of two
+numbers in $A$, i.e.
+\[ |\{(a, b) : a, b \in A, a \leq b, a+b=n \}| = r ?\]
+\end{hw}
+
+\begin{sol}
+	I have not solved this problem.
+\end{sol}
+
+\hfill by dyy
+
+\end{document}
