@@ -76,7 +76,9 @@ There exists a combinatorial proof for this, but I don't suggest you try to find
 	$$
 	There exists a set $A = [2n]$ and we want to count the number of subset $S$ of $A$, whose size is $n$. It's obvious that the number is $\binom{2n}{n}$.
 	
-	Let's consider the left side. Firstly, it enumerate the set $P =  S\cap (S + {-n})$. Then we have determined $2 \mind 
+	Assuming there exists a 01 string whose length is $2n$. We call the first half $s_1$ and the second half $s_2$. The right side of the formula count the number of such string that contains $n$ $1$. 
+	
+	Let's consider what the left side of the formula count. Firstly, it enumerate the intersection of $s_1$ and $s_2$ that contains $k$ $1$. Then there are totally $2k$ $1$ in the whole string and we need to choose another $n - 2k$ $1$ to be $1$. We can select $n-2k$ places in the rest $n-k$ places. For any chosen place, it can be in either $s_1$ or $s_2$. There are totally $2^{n-2k}$ chooses. Finally, we get the left side of the formula.
 \end{sol}
 
 \begin{hw}
@@ -100,9 +102,35 @@ $n$,
 \]
 \end{hw}
 
+\begin{sol}
+	Let $\{a_n\}$ be a sequence of $R$ and $B$ and its length is $2n$. A sequence is good if and only if it does not contain $RB$. Let $B_i$ ($1 \leq i \leq 2n-1$) be the set that contains all the bad sequences that $a_i = R$ and $a_{i+1} = B$.
+	
+	By enumerating the position of the first $B$, we can know that there are totally $2n+1$ good sequences. 
+	
+	By PIE, we know that the number of all the good sequences is:
+	\[ \begin{split}
+		&   \sum_{S \subset [2n-1]}(-1)^{\abs{S}}B_{S}  
+		    = \sum_{k = 0}^{2n-1}\sum_{\substack{S\subset [2n-1]\\ \abs{S}=k}} (-1)^{\abs{S}}B_{S} \\
+		&   = \sum_{k = 0}^{2n-1}(-1)^k\sum_{\substack{S\subset [2n-1]\\ \abs{S}=k}}B_{S} 
+		    =\sum_{k = 0}^{2n-1}(-1)^k \binom{2n-k}{k}2^{2n-2k}
+	\end{split} \]
+	
+	The last equation may need some explanation. If the exist $i$ such that $i \in S$ and $i+1 \in S$, $B_S$ is empty. Because we can not assign two different values to the same place. If there does not exist such $i$, we can use $\binom{2n-2k + k}{k}$ to find the number of such $S$. For each $S$, we have determined the values of $2k$ places and we can assign $R$ or $B$ to other $2n-2k$ places and there are totally $2^{2n-2k}$ ways. 
+	
+	
+\end{sol}
+
 \begin{hw}
 Count the number of permutations $\pi$ of $[2n]$ such that $\pi(i)+ \pi(i+1) \neq 2n+1$ for all $1 \leq i \leq 2n-1$.
 \end{hw}
+
+\begin{sol}
+	Let $B_i (1 \leq i \leq 2n-1)$ be the set of permutation $\pi$ satisfying $\pi(i) + \pi(i+1) = 2n + 1$. Then the answer is 
+	$$
+		\sum_{S \subset [2n-1]}(-1)^{\abs{S}}B_S = \sum_{k = 0}^{2n-1}(-1)^k\binom{2n-k}{k}\frac{n!}{(n-k)!}(n-2k)!
+	$$
+	For a $B_S$, if $i,i+1 \in S$, the $B_S$ is an empty set. So there are $\binom{2n-k}{k}$ nonempty $B_S$. For each $S$ that has the size $k$, we can enumerate the minor number in each of the $k$ couple places. Then we have $\frac{n!}{(n-k)!}$ schemes. For the rest $n-2k$ numbers, we can random places them and there are $(n-2k)!$ schemes. 
+\end{sol}
 
 \section{More for the pie day}
 
