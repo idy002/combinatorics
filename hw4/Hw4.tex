@@ -118,24 +118,23 @@ and $v_1v_{51}$. Compute the chromatic polynomial of $G$.
 		P_G(x) & = \sum_{F \subseteq E}(-1)^{\abs{F}}x^{c(F)} 	\\
 			   & = \sum_{F_1\subseteq A}\sum_{F_2\subseteq B}\sum_{F_3\subseteq C}(-1)^{\abs{F_1}+\abs{F_2}+\abs{F_3}}x^{c(F_1 \cup F_2 \cup F_3)}	\\
 			   & = \sum_{F_1\subseteq A}\sum_{F_2\subseteq B}(-1)^{\abs{F_1}+\abs{F_2}}(x^{c(F_1\cup F_2)} - x^{c(F_1\cup F_2 \cup \{e_0\})}) \\
-			   & = \sum_{k_1 = 0}^{50}\sum_{k_2 = 0}^{50}\binom{50}{a}\binom{50}{b}(-1)^{k_1+k_2}(x^{100-k_1-k_2} - x^{99-k_1-k_2+[k_1=50]+[k_2=50]})  \\
-			   & = (x-1)^{100} - \frac{1}{x}\sum_{k_1 = 0}^{50}\sum_{k_2 = 0}^{50}\binom{50}{a}\binom{50}{b}(-1)^{k_1+k_2}x^{100-k_1-k_2+[k_1=50]+[k_2=50]}
+			   & = \sum_{k_1 = 0}^{50}\sum_{k_2 = 0}^{50}\binom{50}{a}\binom{50}{b}(-1)^{k_1+k_2}(x^{100-k_1-k_2+[k_1+k_2=100]} - x^{99-k_1-k_2+[k_1=50]+[k_2=50]})  \\
+			   & = (x-1)^{100} - 1 + x - \frac{1}{x}\sum_{k_1 = 0}^{50}\sum_{k_2 = 0}^{50}\binom{50}{a}\binom{50}{b}(-1)^{k_1+k_2}x^{100-k_1-k_2+[k_1=50]+[k_2=50]}
 	\end{split}
 	\]
 	Let's compute the second part of the last line :
 	\[
 	\begin{split}
 		&\sum_{k_1 = 0}^{50}\sum_{k_2 = 0}^{50}\binom{50}{a}\binom{50}{b}(-1)^{k_1+k_2}x^{100-k_1-k_2+[k_1=50]+[k_2=50]} \\
-	  = & ((x-1)^{100} - 2\sum_{k=0}^{50}\binom{50}{k}(-1)^kx^{50-k} + 1) + 2\sum_{k=0}^{49}\binom{50}{k}(-1)^{k}x^{50-k} + x^2 \\
-	  = & ((x-1)^{100} - 2(x-1)^{50} + 1)+2((x-1)^{50}-1)+x^2 \\
-	  = & ((x-1)^{50}-1)^2+2((x-1)^{50}-1)+1+x^2-1	\\
-	  = & (((x-1)^{50}-1)^2+1)^2+x^2-1
+	  = & ((x-1)^{100} - 2\sum_{k=0}^{50}\binom{50}{k}(-1)^kx^{50-k} + 1) + 2x\sum_{k=0}^{49}\binom{50}{k}(-1)^{k}x^{50-k} + x^2 \\
+	  = & ((x-1)^{100} - 2(x-1)^{50} + 1)+2x((x-1)^{50}-1)+x^2 \\
+	  = & (x-1)^{100}+2(x-1)^{51}+x^2-2x+1
 	\end{split}
 	\]
-	
-	
-
-	
+	At last, we get the answer:
+	$$
+		P_G(x) = (x-1)^{100}+(x-1)-\frac{(x-1)^{100}+2(x-1)^{51}+(x-1)^2}{x}
+	$$
 \end{sol}
 
 \begin{hw}
@@ -177,6 +176,19 @@ Again, they can plot a strategy before the game starts. Will they survive?
 \end{hw}
 
 {\em Comment:} Gustav Mahler's last word in this world was "Mozart". But Mozart is not a colour.
+
+\begin{sol}
+	They would thank me because I can save all of them.
+	
+	The strategy is following(I use $p_i$ to represent the number of $i$th person):
+	\begin{itemize}
+		\item The $100$th man can know all $99$ numbers in front of him, so he can know the remain two numbers(let's call them $a$ and $b$). He only needs to shout $(a+b) \bmod + 1$. (So he shouts the wrong number, but it does not matter)
+		\item The $99$th man can know all $98$ numbers in from of him, so he can know the set $\{a, b, p_{99}\}$. Because the sums of every two numbers in the set are pairwise different, so we can know $p_{99}$ according the number got from the $100$th man. He just shouts it.
+		\item The $98$th man can know all $97$ numbers in from of him and $p_{99}$, so he can know the set $\{a, b, p_{98}\}$. Similar with the $99$th person, he can know $p_{98}$ and shouts it.
+		\item $\cdots$
+	\end{itemize}
+	They will shout wrongly exactly one time, so all of them will survive.
+\end{sol}
 
 \section{Other problems}
 
