@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.26)  24 MAR 2018 23:23
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.8.26)  27 MAR 2018 16:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Hw3.tex
-(./Hw3.tex
+**Hw4.tex
+(./Hw4.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -103,62 +103,75 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip48
 \dth@everypar=\toks24
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read1
+)
 \c@thm=\count99
 \c@eg=\count100
 \c@ex=\count101
 \c@defi=\count102
 \c@hw=\count103
- (./Hw3.aux)
-\openout1 = `Hw3.aux'.
+ (./Hw4.aux)
+\openout1 = `Hw4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Try loading font information for OT1+pnc on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+pnc on input line 48.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pnc.fd
 File: ot1pnc.fd 2001/06/04 font definitions for OT1/pnc.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+LaTeX Font Info:    Try loading font information for U+msa on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+LaTeX Font Info:    Try loading font information for U+msb on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 54.
+(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 60.
 LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 62.
+(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 63.
+LaTeX Font Info:    Try loading font information for OMS+pnc on input line 69.
 
-Overfull \hbox (6.22246pt too wide) detected at line 72
-[][] \OT1/cmr/m/n/12 = [][] = [][] = [][]
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omspnc.fd
+File: omspnc.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pnc/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+ [1
+
+]
+Overfull \hbox (51.4936pt too wide) in paragraph at lines 124--124
+[] 
  []
 
-[1
-
-] [2] [3] (./Hw3.aux) ) 
+[2] [3] [4] (./Hw4.aux) ) 
 Here is how much of TeX's memory you used:
- 1300 strings out of 493638
- 14111 string characters out of 6146796
- 68630 words of memory out of 5000000
- 4730 multiletter control sequences out of 15000+600000
- 12374 words of font info for 42 fonts, out of 8000000 for 9000
+ 1339 strings out of 493638
+ 14867 string characters out of 6146796
+ 71131 words of memory out of 5000000
+ 4766 multiletter control sequences out of 15000+600000
+ 11446 words of font info for 39 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 27i,20n,26p,461b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,16n,26p,662b,177s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Hw3.pdf (3 pages).
+Output written on Hw4.pdf (4 pages).
