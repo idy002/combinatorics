@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{eg}{Example}
+\newtheorem{ex}{Exercise}
+\newtheorem{defi}{Definition}
+\theoremstyle{definition}
+\newtheorem{hw}{Problem}
+\newenvironment{sol}
+  {\par\vspace{3mm}\noindent{\it Solution}.}
+  {\qed}
+
+\newcommand{\ov}{\overline}
+\newcommand{\cb}{{\cal B}}
+\newcommand{\cc}{{\cal C}}
+\newcommand{\cd}{{\cal D}}
+\newcommand{\ce}{{\cal E}}
+\newcommand{\cf}{{\cal F}}
+\newcommand{\ch}{{\cal H}}
+\newcommand{\cl}{{\cal L}}
+\newcommand{\cm}{{\cal M}}
+\newcommand{\cp}{{\cal P}}
+\newcommand{\cs}{{\cal S}}
+\newcommand{\cz}{{\cal Z}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\dist}{\mbox{\rm dist}}
+\newcommand{\bn}{{\mathbf N}}
+\newcommand{\bz}{{\mathbf Z}}
+
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{2ex}
+\newenvironment{proofof}[1]{\bigskip\noindent{\itshape #1. }}{\hfill$\Box$\medskip}
+
+\renewcommand{\familydefault}{pnc}
+
+\begin{document}
+
+$\;$\hfill Suggested due date: 2018/04/04
+
+\bigskip
+
+\begin{center}
+{\LARGE\bf Combinatorics: Homework 5}
+\end{center}
+
+\bigskip
+
+\section{New problems}
+
+\begin{hw}
+Let $A$ be an $n \times n$ 0-1 matrix such that any $n$ cells on
+distinct rows and distinct columns contains at least one 1. Prove
+that,
+we can find integer indices
+\[1 \leq a_1 < a_2 < \dots < a_r \leq n, 1 \leq b_1 < b_2 < \dots <
+  b_s \leq n,\]
+such that $r+s>n$ and $A_{a_i, b_j} = 1$ for all $1 \leq i \leq r$, $1
+\leq j \leq s$.
+\end{hw}
+
+\begin{sol}
+	Let's consider a bipartite graph $G$ with $n$ vertices in each side and there is an edge $(u,v)$ if and only if $A_{u,v} = 0$. Because for any $n$ cells on distinct rows and distinct columns contains at least one 1, there does not exist a perfect matching in the graph $G$. Let's define $N(S)$ as the set of columns that contain at least one $0$ in the rows $S$.	By Hall's theorem, there exist $S$ such that $\abs{N(S)} < \abs{S}$. Then the indices of $S$ are $a_1,a_2,\dots,a_r$ and the indices of the columns other than $N(S)$ are $b_1,b_2,\dots,b_s$. Because $n - s < r$, $r+s > n$. Then we find what we want.
+\end{sol}
+
+\begin{hw}
+A matrix with integer entries is called {\em good} if no row nor column contains the same number
+twice.
+
+Let $A$ be a $k \times n$ good matrix ($k < n$) with entries from $[n]$, prove that there is an $n \times n$ good matrix $B$ with entries from $[n]$ such that the first $k$ rows of $B$ is identical to $A$. (Such a $B$ is called a {\em Latin square} of order $n$.)
+\end{hw}
+
+\begin{sol}
+	Let's construct a bipartite graph $G$ according to the good matrix $A$. The bipartite graph has $n$ vertices in each side and $(u,v)$ is an edge if and only if the column $u$ does not contain number $v$. Let's call the vertices in the left side $P$ and those in the right side $Q$. For $u \in P$, it connects exactly $n - k$ vertices in $Q$ because the $u$ column has exactly $k$ numbers and it connects to the remain $n-k$ numbers. For $v \in Q$, it also connects exactly $n - k$ numbers because every row in $A$, $v$ occurs exactly once in different columns. By the discuss in class, we have $\abs{S} \geq \abs{N(S)}$ for all subset $S \subseteq P$. By Hall's theorem, there exists a matching. Then we fill $u$ with the number $N(u)$. We can repeat this process until $k = n$ and we have found a required Latin square.
+\end{sol}
+
+\begin{hw}
+A round-robin tournament of $2n$ teams lasted for $2n-1$ days, as follows.
+On each day, every team played one game against another team, with one team winning
+and one team losing in each of the $n$ games. Over the course of the tournament,
+each team played every other team exactly once. Can one necessarily choose
+one winning team from each day without choosing any team more than once?
+\end{hw}
+
+\begin{sol}
+	We can construct a bipartite graph $(U,V)$ and $(u,v) \in E$ if and only if $v$ is a winner on $u$th day. For any $S \subseteq U$, let's consider $N(S)$. If $N(S) = [2n]$, then it's obvious that $\abs{S} \leq \abs{N(S)}$. If $N(S) \neq [2n]$, then there exists a team lose all the days in $S$. Then there must exist $\abs{S}$ different teams win that team. Then we also have $\abs{S} \leq \abs{N(S)}$. By Hall's theorem, we can find a perfect matching. 
+\end{sol}
+
+\begin{hw}
+In a graph, a {\em matching} is a set of disjoint edges; its size is the number of edges. A {\em vertex cover}
+is a set of vertices that touch every edge.
+
+Prove that in a bipartite graph, the maximum matching size equals the minimum vertex cover size.
+\end{hw}
+
+\begin{sol}
+	Because a vertex can cover at most one matching edge, the minimum vertex cover size is greater than the maximum matching size.
+	
+	Let $C$ be a minimum vertex cover of graph $G = (V,E)$. Then there is a bipartite $(C,V-C)$ and $E' = \{(u,v) \in E \mid u \in C, v \in V-C\}$. Because $C$ is a minimum vertex cover, the bipartite graph has a perfect matching(If not, there exists a subset $S \subseteq C$ and $\abs{N(S)}<\abs{S}$. Then we can replace $S$ with $N(S)$ to get a smaller vertex cover. It contradicts to our assumption). Then we find a matching of the old graph $G$ and the matching size equals to the size of minimum vertex cover.
+\end{sol}
+
+\begin{hw}
+$n \geq 3$ and $Q_n$ is the set of all 0-1 row vectors of length $n$. Determine the smallest
+positive integer $m$ so that for any $X \in \dbinom{Q_n}{m}$, we can pick $n$ elements in $X$
+and arrange them in a square matrix, with each element on a row, so that the values on the diagonal
+are all the same.
+\end{hw}
+
+\begin{sol}
+	Firstly, I give out my answer: when $n = 3$ we have $m = 4$ and when $n \geq 4$ we have $m = 2^{n - 2} + 1$. $n = 3$ is trivial and we can check by hand. 
+	
+	When $n \geq 4$, we know that the minimum $m$ must greater than $2^{n-2}$. Because we can choose $X$ by select all the vector $x$ that holds $x_1 = 0$ and $x_n = 1$. Then absolutely there does not exist a matching. And at most we can choose $2^{n-2}$ such $x$ so our answer must greater than it. I'll prove that $2^{n-2}+1$ is enough for $n \geq 4$. (After we have determined the set $X$, the rest of the problem is a matching problem and the left side of vertices are the rows and the right side of vertices are the members of $X$. There are two matching problem. And that only one has a perfect matching is enough). For a subset $S \subseteq [n]$ with $\abs{S} \geq 3$, we let $k = \abs{S}$. We can know that $\abs{[2]^n-N(S)} = 2^{n-k}$. Thus we have $\abs{X-N(S)} \leq 2^{n-k} \leq 2^{n-2}+1-k$ and then $\abs{N(S)} \geq k$(i.e $\abs{N(S)} \geq \abs{S}$). This is true for both matching problems. When $k = 2$, there exists only one case that above inequality($2^{n-k} \leq 2^{n-2}+1-k$) does not holds, that shows $\abs{X-N(S)} = 2^{n-2}$. This shows $X$ is all the vectors that there are two columns that is always $0$ or always $1$ and there must exist a matching problem has a perfect matching. When $k = 1$, the inequality $2^{n-k} \leq 2^{n-2}+1-k$ holds and we can get $\abs{N(S)} \geq \abs{S}$ in both matching problems. Above all, we prove that no matter what $X$ we choose, there exists at least one matching problem has a perfect matching.
+	
+	I know my English is very poor but I believe you can understand what I have said.
+\end{sol}
+
+\section{Still haunting}
+
+\begin{hw}
+Consider all the permutations on $[100]$ and their cycle
+representations.
+Let $N$ be the number of those permutations with
+exactly 50 cycles. What is $N \mod 3$? Prove your answer.
+\end{hw}
+
+\begin{sol}
+	The answer is $N \equiv 0 \pmod{3}$.
+	
+	We can classify the permutations with $50$ cycles by the shape of permutation(the shape of a permutation is the number of cycles and the size of each cycle). Then we have many equivalent classes and the permutation in the same class has the same shape. If the shape of a class has a cycle whose length is greater than $4$, then the number of permutations in that class is a multiply of $3$(Because there is a factor $(l-1)!$ in the number of permutation in that class). So we only need to consider the permutations whose all cycles has length less than $4$. That is
+	$$
+		N \equiv \sum_{x = 0}\sum_{y = 0, 3x + 2y \leq 100}\frac{100!}{(3!)^x(2!)^y} \pmod{3}
+	$$
+	We can see that $x \leq 33$ and the power of $3$ in $100!$ is obvious greater than $3$. So every item on the right is a multiply of $3$. Then $N \equiv 0 \pmod{3}$.
+\end{sol}
+
+\begin{hw}
+Prove that, for any positive integer $k$, there exists
+a graph whose chromatic number is $k$, yet it does not
+contain a triangle.
+\end{hw}
+
+\end{document}
